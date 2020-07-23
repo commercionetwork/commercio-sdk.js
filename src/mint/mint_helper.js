@@ -5,8 +5,8 @@
  */
 function buildOpenCdpMsg(openCdp) {
   let openCdpMsg = new Object();
-  openCdpMsg.type = "commercio/MsgOpenCdp";
-  openCdpMsg.value = openCdp;
+  openCdpMsg['type'] = "commercio/MsgOpenCdp";
+  openCdpMsg['value'] = openCdp;
   return openCdpMsg;
 };
 
@@ -17,8 +17,8 @@ function buildOpenCdpMsg(openCdp) {
  */
 function buildCloseCdpMsg(closeCdp) {
   let closeCdpMsg = new Object();
-  closeCdpMsg.type = "commercio/MsgCloseCdp";
-  closeCdpMsg.value = closeCdp;
+  closeCdpMsg['type'] = "commercio/MsgCloseCdp";
+  closeCdpMsg['value'] = closeCdp;
   return closeCdpMsg;
 };
 
