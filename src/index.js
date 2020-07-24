@@ -1,13 +1,13 @@
 import {
-  buildCloseCdpMsg,
-  buildOpenCdpMsg,
+  buildCloseCdpMsgList,
+  buildOpenCdpMsgList,
   closeCdpFromWallet,
   openCdpFromWallet
 } from "./mint";
 
 export {
-  buildOpenCdpMsg,
-  buildCloseCdpMsg,
+  buildOpenCdpMsgList,
+  buildCloseCdpMsgList,
   closeCdpFromWallet,
   openCdpFromWallet
 };

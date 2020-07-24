@@ -1,8 +1,8 @@
 /**
  * Allows to easily create a CloseCdp object
  * 
- * @param {string} bech32Address
- * @param {string} timeStamp
+ * @param {String} bech32Address
+ * @param {String} timeStamp
  * @return {CloseCdp} 
  */
 function closeCdpFromWallet({

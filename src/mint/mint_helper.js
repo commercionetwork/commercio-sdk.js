@@ -1,28 +1,33 @@
 /**
- * Builds an open CDP message.
+ * Builds an array of 1 open CDP message.
  * @param {OpenCdp} openCdp
- * @return {StdMsg}
+ * @return {Array.<StdMsg>}
  */
-function buildOpenCdpMsg(openCdp) {
+function buildOpenCdpMsgList(openCdp) {
   let openCdpMsg = new Object();
   openCdpMsg['type'] = "commercio/MsgOpenCdp";
   openCdpMsg['value'] = openCdp;
-  return openCdpMsg;
+  let openCdpMsgList = new Array(1).fill(openCdpMsg);
+  return openCdpMsgList;
 };
 
 /**
- * Builds a close CDP message.
- * @param {CloseCdp} closeCdp
- * @return {StdMsg}
+ * Builds an array of close CDP messages.
+ * @param {Array.<CloseCdp>} closeCdps
+ * @return {Array.<StdMsg>}
  */
-function buildCloseCdpMsg(closeCdp) {
-  let closeCdpMsg = new Object();
-  closeCdpMsg['type'] = "commercio/MsgCloseCdp";
-  closeCdpMsg['value'] = closeCdp;
-  return closeCdpMsg;
+function buildCloseCdpMsgList(closeCdps) {
+  let closeCdpMsgList = new Array(closeCdps.length).fill(null).map((closeCdp) => {
+    let closeCdpMsg = new Object();
+    closeCdpMsg['type'] = "commercio/MsgCloseCdp";
+    closeCdpMsg['value'] = closeCdp;
+    return closeCdpMsg;
+  });
+
+  return closeCdpMsgList
 };
 
 export {
-  buildCloseCdpMsg,
-  buildOpenCdpMsg
+  buildCloseCdpMsgList,
+  buildOpenCdpMsgList
 };
