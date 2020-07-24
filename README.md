@@ -1,5 +1,10 @@
 # Commercio-SDK.js
 
+![GitHub release](https://img.shields.io/github/release/commercionetwork/commercio-sdk.js)
+![GitHub license](https://img.shields.io/github/license/commercionetwork/commercio-sdk.js)
+![GitHub top language](https://img.shields.io/github/languages/top/commercionetwork/commercio-sdk.js)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/commercionetwork/commercio-sdk.js)
+
 Commercio SDK Javascript
 
 ## How to test

@@ -26,5 +26,8 @@
     "@types/jest": "^26.0.5",
     "babel-jest": "^26.1.0",
     "jest": "^26.1.0"
+  },
+  "dependencies": {
+    "uuid": "^8.2.0"
   }
 }
