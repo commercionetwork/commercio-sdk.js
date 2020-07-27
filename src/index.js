@@ -1,3 +1,19 @@
+/* DOCS */
+import {
+  buildSendDocumentReceiptMsgList,
+  buildShareDocumentMsgList,
+  checksumAlgorithms,
+  commercioDocFromWallet,
+  commercioDocReceiptFromWallet
+} from "./docs";
+/* ID */
+import {
+  buildDidDocumentProofSignatureContent,
+  buildRequestDidPowerUpMsgList,
+  buildSetDidDocumentMsgList,
+  didDocumentFromWallet,
+  didPowerUpfromWallet
+} from "./id";
 /* MEMBERSHIP */
 import {
   buildBuyMembershipMsgList,
@@ -6,7 +22,6 @@ import {
   inviteUserFromWallet,
   memberhipTypes
 } from "./membership";
-
 /* MINT */
 import {
   buildCloseCdpMsgList,
@@ -15,13 +30,24 @@ import {
   openCdpFromWallet
 } from "./mint";
 
+
 export {
   buildBuyMembershipMsgList,
   buildCloseCdpMsgList,
+  buildDidDocumentProofSignatureContent,
   buildInviteUserMsgList,
   buildOpenCdpMsgList,
+  buildRequestDidPowerUpMsgList,
+  buildSendDocumentReceiptMsgList,
+  buildSetDidDocumentMsgList,
+  buildShareDocumentMsgList,
   buyMembershipFromWallet,
+  checksumAlgorithms,
   closeCdpFromWallet,
+  commercioDocFromWallet,
+  commercioDocReceiptFromWallet,
+  didDocumentFromWallet,
+  didPowerUpfromWallet,
   inviteUserFromWallet,
   memberhipTypes,
   openCdpFromWallet,
