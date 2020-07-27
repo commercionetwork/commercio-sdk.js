@@ -10,13 +10,8 @@
  */
 /**
  * @typedef {Object} StdCoin
- * @property {String} denom
  * @property {String} amount
- */
-/**
- * @typedef {Object} StdFee
- * @property {String} gas
- * @property {Array.<StdCoin>} amount
+ * @property {String} denom
  */
 /**
  * @typedef {Object} StdMsg

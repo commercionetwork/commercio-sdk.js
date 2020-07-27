@@ -28,6 +28,7 @@
     "jest": "^26.1.0"
   },
   "dependencies": {
+    "node-forge": "^0.9.1",
     "uuid": "^8.2.0"
   }
 }

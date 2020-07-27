@@ -54,3 +54,8 @@
  * @property {String} denom
  * @property {String} amount
  */
+/**
+ * @typedef {Object} StdMsg
+ * @property {String} type
+ * @property {DidDocument | RequestDidPowerUp} value
+ */

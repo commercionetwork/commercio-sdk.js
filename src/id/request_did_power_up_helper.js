@@ -2,7 +2,19 @@ import {
   v4 as uuidv4
 } from "uuid";
 
-async function didPowerUpfromWallet({
+let forge = require('node-forge');
+
+/**
+ * Creates a Did PowerUp
+ * 
+ * @param {String} senderDid 
+ * @param {String} pairwiseDid 
+ * @param {Array.<StdCoin>} amount 
+ * @param {String} privateKey 
+ * @param {String} governmentRsaPubKey 
+ * @return {RequestDidPowerUp}
+ */
+function didPowerUpfromWallet({
   senderDid,
   pairwiseDid,
   amount,
@@ -10,24 +22,23 @@ async function didPowerUpfromWallet({
   governmentRsaPubKey
 }) {
   let timestamp = Date.now().toString();
-  let signature = await _signPowerUp({
-    senderDid: senderDid,
-    pairwiseDid: pairwiseDid,
-    timeStamp: timestamp,
+  let signatureData = senderDid + pairwiseDid + timestamp;
+  let signature = _makeJsonSignature({
+    signatureData: signatureData,
     privateKey: privateKey
   });
 
-  let didPowerUpRequestPayload = new Object();
-  didPowerUpRequestPayload['sender_did'] = senderDid;
-  didPowerUpRequestPayload['pairwise_did'] = pairwiseDid;
-  didPowerUpRequestPayload['timestamp'] = timestamp;
-  didPowerUpRequestPayload['signature'] = signature;
+  let signatureJson = new Object();
+  signatureJson['sender_did'] = senderDid;
+  signatureJson['pairwise_did'] = pairwiseDid;
+  signatureJson['timestamp'] = timestamp;
+  signatureJson['signature'] = forge.util.encode64(signature);
 
-  let aesKey = _generateAesKey();
+  let aesKey = forge.random.getBytesSync(32);
 
-  let encryptedProof = _encryptWithAes(aesKey, didPowerUpRequestPayload);
+  let encryptedProof = _encryptWithAes(aesKey, JSON.stringify(signatureJson));
 
-  let encryptedProofKey = _encryptWithRsa(governmentRsaPubKey, aesKey);
+  let encryptedProofKey = _encryptWithRsa(governmentRsaPubKey, aesKey.toString());
 
   let requestDidPowerUp = new Object();
   requestDidPowerUp['claimant'] = senderDid;
@@ -39,15 +50,35 @@ async function didPowerUpfromWallet({
   return requestDidPowerUp;
 }
 
-async function _signPowerUp({
-  senderDid,
-  pairwiseDid,
-  timeStamp,
+function _makeJsonSignature({
+  signatureData,
   privateKey
-}) {};
+}) {
+  let privateKey = forge.pki.privateKeyFromPem(privateKey);
+  let md = forge.md.sha256.create();
+  md.update(signatureData, 'utf8');
+  return privateKey.sign(md);
+};
 
-async function _generateAesKey() {};
+function _encryptWithAes(aesKey, payload) {
+  let cipher = forge.aes.createCipher('AES-GCM', aesKey);
+  let iv = forge.random.getBytesSync(12);
+  cipher.start({
+    iv: iv
+  });
+  cipher.update(forge.util.createBuffer(payload, "utf8"));
+  cipher.finish();
+  let encrypted = cipher.output;
+  return forge.util.encode64(encrypted);
+};
 
-async function _encryptWithAes(aesKey, payload) {};
+function _encryptWithRsa(rsaKey, payload) {
+  let publicKey = forge.pki.publicKeyFromPem(rsaKey);
+  let buf = forge.util.createBuffer(payload, "utf8");
+  let encrypted = publicKey.encrypt(buf, 'RSAES-PKCS1-V1_5');
+  return forge.util.encode64(encrypted);
+};
 
-async function _encryptWithRsa(rsaKey, payload) {};
+export {
+  didPowerUpfromWallet
+};
