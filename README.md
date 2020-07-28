@@ -53,6 +53,7 @@ let sendDocumentReceiptMsgList = buildSendDocumentReceiptMsgList([commercioDocRe
 
 - *didDocumentFromWallet*, creates a DDO.
 - *buildDidDocumentProofSignatureContent*, builds the proof signature content of DDO.
+- *buildDidDocumentPublicKey*, builds a DDO public key.
 - *buildSetDidDocumentMsgList*, builds an array of SetIdentity messages.
 - *didPowerUpfromWallet*, creates a Did PowerUp.
 - *buildRequestDidPowerUpMsgList*, builds an array of RequestDidPowerUp messages.
@@ -60,6 +61,35 @@ let sendDocumentReceiptMsgList = buildSendDocumentReceiptMsgList([commercioDocRe
 Example to set a DDO:
 
 ```js
+let publicKeyVerification = buildDidDocumentPublicKey({
+  id: "<user Did plus suffix #keys-1>",
+  type: "RsaVerificationKey2018",
+  controller: "<user Did>",
+  publicKeyPem: "<public Pem key>"
+});
+let publicKeySignature = buildDidDocumentPublicKey({
+  id: "<user Did plus suffix #keys-2>",
+  type: "RsaSignatureKey2018",
+  controller: "<user Did>",
+  publicKeyPem: "<public Pem key>"
+});
+let didDocumentProofSignatureContent = buildDidDocumentProofSignatureContent({
+  context: "https://www.w3.org/ns/did/v1",
+  did: "<user did>",
+  publicKeys: [publicKeyVerification, publicKeySignature]
+});
+
+// Create the 'signatureValue' following these instructions: https://docs.commercio.network/x/id/#associating-a-did-document-to-your-identity
+
+let didDocument = didDocumentFromWallet({
+  context: didDocumentProofSignatureContent['context'],
+  did: didDocumentProofSignatureContent['did'],
+  publicKeys: didDocumentProofSignatureContent['publicKeys'],
+  bech32PublicKey: "<did bech32 pubkey>",
+  signatureValue: "<the 'signatureValue' previously generated>",
+  purpose: "<the proof purpose>"
+});
+let setDidDocumentMsgList = buildSetDidDocumentMsgList([didDocument]);
 ```
 
 Example to request a PowerUp:
