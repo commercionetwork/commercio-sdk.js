@@ -11,6 +11,25 @@ const checksumAlgorithms = {
   SHA512: "sha-512"
 };
 
+/**
+ * Creates a Commercio Doc
+ * @param {String} bech32Address
+ * @param {Array.<String>}} recipients
+ * @param {String} contentUri
+ * @param {String} metadataContentUri
+ * @param {CommercioDocMetadataSchema} metadataSchema
+ * @param {String} metadataSchemaType
+ * @param {String} checksumValue
+ * @param {String} checksumAlgorithm
+ * @param {Array.<CommercioDocEncryptionDataKey>} encryptionDataKeys
+ * @param {Array.<String>} encryptionDataEncryptedData
+ * @param {String} doSignStorageUri
+ * @param {String} doSignSignerInstance
+ * @param {Array.<String>} doSignSdnData
+ * @param {String} doSignVcrId
+ * @param {String} doSignCertificateProfile
+ * @return {CommercioDoc}
+ */
 function commercioDocFromWallet({
   bech32Address,
   recipients,
