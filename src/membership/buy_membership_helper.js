@@ -6,7 +6,7 @@ const memberhipTypes = {
 };
 
 /**
- * Allows to easly create a BuyMembership object
+ * Creates a BuyMembership
  * 
  * @param {String} bech32Address
  * @param {String} membershipType

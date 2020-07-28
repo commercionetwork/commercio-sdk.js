@@ -4,7 +4,6 @@ import {
 
 /**
  * Creates a Commercio Doc receipt
- * @param {String} uuid 
  * @param {String} sender 
  * @param {String} recipient 
  * @param {String} txHash 

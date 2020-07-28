@@ -1,24 +1,26 @@
 /**
- * Build the proof signature content of DDO
+ * Builds the proof signature content of DDO
+ * 
  * @param {String} context
- * @param {String} id
+ * @param {String} did
  * @param {Array.<DidDocumentPublicKey>} publicKeys
  * @return {DidDocumentProofSignatureContent}
  */
 function buildDidDocumentProofSignatureContent({
   context,
-  id,
+  did,
   publicKeys
 }) {
   let didDocumentProofSignatureContent = new Object;
   didDocumentProofSignatureContent['@context'] = context;
-  didDocumentProofSignatureContent['id'] = id;
+  didDocumentProofSignatureContent['id'] = did;
   didDocumentProofSignatureContent['publicKey'] = publicKeys;
   return didDocumentProofSignatureContent;
 };
 
 /**
  * Creates a DDO
+ * 
  * @param {String} context
  * @param {Array.<DidDocumentPublicKey>} publicKeys
  * @param {String} bech32Address
