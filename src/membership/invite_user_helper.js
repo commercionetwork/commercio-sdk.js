@@ -1,5 +1,5 @@
 /**
- * Allows to easily create a InviteUser object
+ * Creates an InviteUser
  * 
  * @param {String} recipient 
  * @param {String} sender

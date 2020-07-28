@@ -1,5 +1,5 @@
 /**
- * Allows to easily create a CloseCdp object
+ * Creates a CloseCdp.
  * 
  * @param {String} bech32Address
  * @param {String} timeStamp

@@ -25,7 +25,7 @@ function didPowerUpfromWallet({
   let signatureData = senderDid + pairwiseDid + timestamp;
   let signature = _makeJsonSignature({
     signatureData: signatureData,
-    privateKey: privateKey
+    key: privateKey
   });
 
   let signatureJson = new Object();
@@ -52,9 +52,9 @@ function didPowerUpfromWallet({
 
 function _makeJsonSignature({
   signatureData,
-  privateKey
+  key
 }) {
-  let privateKey = forge.pki.privateKeyFromPem(privateKey);
+  let privateKey = forge.pki.privateKeyFromPem(key);
   let md = forge.md.sha256.create();
   md.update(signatureData, 'utf8');
   return privateKey.sign(md);
