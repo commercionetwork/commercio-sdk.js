@@ -1,4 +1,26 @@
 /**
+ * Builds a DDO public key.
+ * 
+ * @param {String} id
+ * @param {String} type
+ * @param {String} controller
+ * @param {String} publicKeyPem
+ * @return {DidDocumentPublicKey}
+ */
+function buildDidDocumentPublicKey({
+  id,
+  type,
+  controller,
+  publicKeyPem
+}) {
+  let key = new Object();
+  key['id'] = id;
+  key['type'] = type;
+  key['controller'] = controller;
+  key['publicKeyPem'] = publicKeyPem;
+  return key;
+}
+/**
  * Builds the proof signature content of DDO
  * 
  * @param {String} context
@@ -27,17 +49,15 @@ function buildDidDocumentProofSignatureContent({
  * @param {String} bech32PublicKey
  * @param {String} signatureValue
  * @param {String} purpose
- * @param {Array.<DidDocumentService>} services
  * @return {DidDocument}
  */
 function didDocumentFromWallet({
   context,
+  did,
   publicKeys,
-  bech32Address,
   bech32PublicKey,
   signatureValue,
-  purpose,
-  services
+  purpose
 }) {
   if (publicKeys.length < 2) {
     throw "At least two keys are required";
@@ -48,7 +68,7 @@ function didDocumentFromWallet({
   }
 
   let proof = _computeDidDocumentProof({
-    bech32Address: bech32Address,
+    bech32Address: did,
     bech32PublicKey: bech32PublicKey,
     signatureValue: signatureValue,
     purpose: purpose
@@ -56,10 +76,9 @@ function didDocumentFromWallet({
 
   let didDocument = new Object();
   didDocument['@context'] = context;
-  didDocument['id'] = bech32Address;
+  didDocument['id'] = did;
   didDocument['publicKey'] = publicKeys;
   didDocument['proof'] = proof;
-  didDocument['service'] = services;
   return didDocument;
 };
 
@@ -91,5 +110,6 @@ function _computeDidDocumentProof({
 
 export {
   buildDidDocumentProofSignatureContent,
+  buildDidDocumentPublicKey,
   didDocumentFromWallet,
 };

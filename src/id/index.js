@@ -1,5 +1,6 @@
 import {
   buildDidDocumentProofSignatureContent,
+  buildDidDocumentPublicKey,  
   didDocumentFromWallet
 } from "./did_document_helper";
 import {
@@ -12,6 +13,7 @@ import {
 
 export {
   buildDidDocumentProofSignatureContent,
+  buildDidDocumentPublicKey,
   buildRequestDidPowerUpMsgList,
   buildSetDidDocumentMsgList,
   didDocumentFromWallet,

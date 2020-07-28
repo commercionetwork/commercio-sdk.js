@@ -23,12 +23,6 @@
  * @property {String} publicKeyPem
  */
 /**
- * @typedef {Object} DidDocumentService
- * @property {String} id
- * @property {String} type
- * @property {String} serviceEndpoint
- */
-/**
  * @typedef {Object} DidDocumentProofSignatureContent
  * @property {String} @context
  * @property {String} id

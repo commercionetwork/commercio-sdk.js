@@ -9,6 +9,7 @@ import {
 /* ID */
 import {
   buildDidDocumentProofSignatureContent,
+  buildDidDocumentPublicKey,
   buildRequestDidPowerUpMsgList,
   buildSetDidDocumentMsgList,
   didDocumentFromWallet,
@@ -35,6 +36,7 @@ export {
   buildBuyMembershipMsgList,
   buildCloseCdpMsgList,
   buildDidDocumentProofSignatureContent,
+  buildDidDocumentPublicKey,
   buildInviteUserMsgList,
   buildOpenCdpMsgList,
   buildRequestDidPowerUpMsgList,
