@@ -5,7 +5,7 @@
  * @return {Array.<StdMsg>}
  */
 function buildBuyMembershipMsgList(buyMemberships) {
-  let buyMembershipMsgList = new Array(buyMemberships.length).fill(null).map((buyMembership) => {
+  let buyMembershipMsgList = buyMemberships.forEach((buyMembership) => {
     let buyMembershipMsg = new Object();
     buyMembershipMsg['type'] = "commercio/MsgBuyMembership";
     buyMembershipMsg['value'] = buyMembership;
@@ -22,7 +22,7 @@ function buildBuyMembershipMsgList(buyMemberships) {
  * @return {Array.<StdMsg>}
  */
 function buildInviteUserMsgList(inviteUsers) {
-  let inviteUserMsgList = new Array(inviteUsers.length).fill(null).map((inviteUser) => {
+  let inviteUserMsgList = inviteUsers.forEach((inviteUser) => {
     let inviteUserMsg = new Object();
     inviteUserMsg['type'] = "commercio/MsgInviteUser";
     inviteUserMsg['value'] = inviteUser;

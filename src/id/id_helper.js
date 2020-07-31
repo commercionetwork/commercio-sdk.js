@@ -5,7 +5,7 @@
  * @return {Array.<StdMsg>}
  */
 function buildSetDidDocumentMsgList(didDocuments) {
-  let setDidDocumentMsgList = new Array(didDocuments.length).fill(null).map((ddo) => {
+  let setDidDocumentMsgList = didDocuments.forEach((ddo) => {
     let ddoMsg = new Object();
     ddoMsg['type'] = "commercio/MsgSetIdentity";
     ddoMsg['value'] = ddo;
@@ -22,7 +22,7 @@ function buildSetDidDocumentMsgList(didDocuments) {
  * @return {Array.<StdMsg>}
  */
 function buildRequestDidPowerUpMsgList(didPowerUpRequests) {
-  let requestDidPowerUpMsgList = new Array(didPowerUpRequests.length).fill(null).map((didPowerUpRequest) => {
+  let requestDidPowerUpMsgList = didPowerUpRequests.forEach((didPowerUpRequest) => {
     let didPowerUpRequestMsg = new Object();
     didPowerUpRequestMsg['type'] = "commercio/MsgRequestDidPowerUp";
     didPowerUpRequestMsg['value'] = didPowerUpRequest;

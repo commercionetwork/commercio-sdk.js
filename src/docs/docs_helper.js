@@ -5,7 +5,7 @@
  * @return {Array.<StdMsg>}
  */
 function buildShareDocumentMsgList(shareDocuments) {
-  let shareDocumentMsgList = new Array(shareDocuments.length).fill(null).map((shareDocument) => {
+  let shareDocumentMsgList = shareDocuments.forEach((shareDocument) => {
     let shareDocumentMsg = new Object();
     shareDocumentMsg['type'] = "commercio/MsgShareDocument";
     shareDocumentMsg['value'] = shareDocument;
@@ -22,7 +22,7 @@ function buildShareDocumentMsgList(shareDocuments) {
  * @return {Array.<StdMsg>}
  */
 function buildSendDocumentReceiptMsgList(sendDocumentReceipts) {
-  let sendDocumentReceiptMsgList = new Array(sendDocumentReceipts.length).fill(null).map((sendDocumentReceipt) => {
+  let sendDocumentReceiptMsgList = sendDocumentReceipts.forEach((sendDocumentReceipt) => {
     let sendDocumentReceiptMsg = new Object();
     sendDocumentReceiptMsg['type'] = "commercio/MsgSendDocumentReceipt";
     sendDocumentReceiptMsg['value'] = sendDocumentReceipt;
