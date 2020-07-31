@@ -82,9 +82,9 @@ let didDocumentProofSignatureContent = buildDidDocumentProofSignatureContent({
 // Create the 'signatureValue' following these instructions: https://docs.commercio.network/x/id/#associating-a-did-document-to-your-identity
 
 let didDocument = didDocumentFromWallet({
-  context: didDocumentProofSignatureContent['context'],
-  did: didDocumentProofSignatureContent['did'],
-  publicKeys: didDocumentProofSignatureContent['publicKeys'],
+  context: didDocumentProofSignatureContent['@context'],
+  did: didDocumentProofSignatureContent['id'],
+  publicKeys: didDocumentProofSignatureContent['publicKey'],
   bech32PublicKey: "<did bech32 pubkey>",
   signatureValue: "<the 'signatureValue' previously generated>",
   purpose: "<the proof purpose>"
