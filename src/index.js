@@ -30,6 +30,10 @@ import {
   closeCdpFromWallet,
   openCdpFromWallet
 } from "./mint";
+import {
+  keysHandler
+} from "./utils";
+
 
 
 export {
@@ -51,6 +55,7 @@ export {
   didDocumentFromWallet,
   didPowerUpfromWallet,
   inviteUserFromWallet,
+  keysHandler,
   memberhipTypes,
   openCdpFromWallet,
 };
