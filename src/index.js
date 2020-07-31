@@ -30,7 +30,9 @@ import {
   closeCdpFromWallet,
   openCdpFromWallet
 } from "./mint";
+/* UTILITIES */
 import {
+  hashGenerator,
   keysHandler
 } from "./utils";
 
@@ -54,6 +56,7 @@ export {
   commercioDocReceiptFromWallet,
   didDocumentFromWallet,
   didPowerUpfromWallet,
+  hashGenerator,
   inviteUserFromWallet,
   keysHandler,
   memberhipTypes,
