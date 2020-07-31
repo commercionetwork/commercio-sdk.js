@@ -17,7 +17,7 @@ function buildOpenCdpMsgList(openCdp) {
  * @return {Array.<StdMsg>}
  */
 function buildCloseCdpMsgList(closeCdps) {
-  let closeCdpMsgList = closeCdps.forEach((closeCdp) => {
+  let closeCdpMsgList = closeCdps.map((closeCdp) => {
     let closeCdpMsg = new Object();
     closeCdpMsg['type'] = "commercio/MsgCloseCdp";
     closeCdpMsg['value'] = closeCdp;
