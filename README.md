@@ -163,6 +163,7 @@ let closeCdpMsgList = buildCloseCdpMsgList([closeCdp]);
 
 ### Utilities
 
+- *hashGenerator*, to get message hash.
 - *keysHandler*, to manage RSA keys.
 
 ## How to build and publish the library
