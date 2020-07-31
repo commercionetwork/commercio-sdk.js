@@ -1,6 +1,6 @@
 # Commercio-SDK.js
 
-![GitHub release](https://img.shields.io/github/release/commercionetwork/commercio-sdk.js)
+![GitHub release](https://img.shields.io/github/release/commercionetwork/commercio-sdk.js?include_prereleases)
 ![GitHub license](https://img.shields.io/github/license/commercionetwork/commercio-sdk.js)
 ![GitHub top language](https://img.shields.io/github/languages/top/commercionetwork/commercio-sdk.js)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/commercionetwork/commercio-sdk.js)
@@ -160,6 +160,10 @@ let closeCdp = closeCdpFromWallet({
 });
 let closeCdpMsgList = buildCloseCdpMsgList([closeCdp]);
 ```
+
+### Utilities
+
+- *keysHandler*, to manage RSA keys.
 
 ## How to build and publish the library
 
