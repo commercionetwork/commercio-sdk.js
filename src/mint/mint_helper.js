@@ -7,7 +7,7 @@ function buildOpenCdpMsgList(openCdp) {
   let openCdpMsg = new Object();
   openCdpMsg['type'] = "commercio/MsgOpenCdp";
   openCdpMsg['value'] = openCdp;
-  let openCdpMsgList = new Array(1).fill(openCdpMsg);
+  let openCdpMsgList = [openCdpMsg];
   return openCdpMsgList;
 };
 
@@ -17,7 +17,7 @@ function buildOpenCdpMsgList(openCdp) {
  * @return {Array.<StdMsg>}
  */
 function buildCloseCdpMsgList(closeCdps) {
-  let closeCdpMsgList = new Array(closeCdps.length).fill(null).map((closeCdp) => {
+  let closeCdpMsgList = closeCdps.forEach((closeCdp) => {
     let closeCdpMsg = new Object();
     closeCdpMsg['type'] = "commercio/MsgCloseCdp";
     closeCdpMsg['value'] = closeCdp;
