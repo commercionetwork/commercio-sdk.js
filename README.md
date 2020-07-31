@@ -161,6 +161,10 @@ let closeCdp = closeCdpFromWallet({
 let closeCdpMsgList = buildCloseCdpMsgList([closeCdp]);
 ```
 
+### Utilities
+
+- *keysHandler*, to manage RSA keys.
+
 ## How to build and publish the library
 
 ```sh
