@@ -11,7 +11,7 @@ function closeCdpFromWallet({
 }) {
   let closeCdp = new Object();
   closeCdp['signer'] = bech32Address;
-  closeCdp['cdp_timestamp'] = timeStamp;
+  closeCdp['timestamp'] = timeStamp;
   return closeCdp;
 };
 
