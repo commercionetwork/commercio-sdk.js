@@ -10,7 +10,7 @@ function openCdpFromWallet({
   amount
 }) {
   let openCdp = new Object();
-  openCdp['deposit_amount'] = amount;
+  openCdp['deposited_amount'] = amount;
   openCdp['depositor'] = bech32Address;
   return openCdp;
 };

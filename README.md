@@ -166,6 +166,10 @@ let closeCdpMsgList = buildCloseCdpMsgList([closeCdp]);
 - *hashGenerator*, to get message hash.
 - *keysHandler*, to manage RSA keys.
 
+## References
+
+*Commercio-sdk.js* uses [node-forge](https://www.npmjs.com/package/node-forge) to perform encryption operations.
+
 ## How to build and publish the library
 
 ```sh
