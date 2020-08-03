@@ -14,7 +14,7 @@ const checksumAlgorithms = {
 /**
  * Creates a Commercio Doc
  * @param {String} bech32Address
- * @param {Array.<String>}} recipients
+ * @param {Array.<String>} recipients
  * @param {String} contentUri
  * @param {String} metadataContentUri
  * @param {CommercioDocMetadataSchema} metadataSchema
