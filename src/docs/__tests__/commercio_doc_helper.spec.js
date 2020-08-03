@@ -2,8 +2,8 @@ import {
   commercioDocFromWallet
 } from "../commercio_doc_helper";
 
-describe("docs/commercio_doc_helper/commercioDocFromWallet", () => {
-  it("Checks if function 'commercioDocFromWallet' retruns a CommercioDoc", () => {
+describe("docs/commercio_doc_helper", () => {
+  it("Checks if function 'commercioDocFromWallet' returns a CommercioDoc", () => {
     const bech32Address = "did:com:1ttxcnevaxlk58u4uuec2n7cm44rk9tsgc8tn6m";
     const recipients = ["did:com:1yq5z4236gmcuus2t940spppwzz8uggpj5ty7ha"];
     const metadataContentUri = "https://example.com/document";
