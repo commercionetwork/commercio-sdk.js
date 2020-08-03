@@ -1,6 +1,6 @@
 /**
  * @typedef {Object} DidDocument
- * @property {String} @context
+ * @property {String} '@context'
  * @property {String} id
  * @property {Array.<DidDocumentPublicKey>} publicKey
  * @property {DidDocumentProof} proof
@@ -24,7 +24,7 @@
  */
 /**
  * @typedef {Object} DidDocumentProofSignatureContent
- * @property {String} @context
+ * @property {String} '@context'
  * @property {String} id
  * @property {Array.<DidDocumentPublicKey>} publicKey
  */
