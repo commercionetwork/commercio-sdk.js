@@ -61,7 +61,7 @@ function _makeJsonSignature({
 };
 
 function _encryptWithAes(aesKey, payload) {
-  let cipher = forge.aes.createCipher('AES-GCM', aesKey);
+  let cipher = forge.cipher.createCipher('AES-GCM', aesKey);
   let iv = forge.random.getBytesSync(12);
   cipher.start({
     iv: iv
