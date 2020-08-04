@@ -68,8 +68,9 @@ function _encryptWithAes(aesKey, payload) {
   });
   cipher.update(forge.util.createBuffer(payload, "utf8"));
   cipher.finish();
-  let encrypted = cipher.output;
-  return forge.util.encode64(encrypted);
+  let encrypted = cipher.output.toHex();
+  let nonce = forge.util.bytesToHex(iv);
+  return forge.util.encode64(encrypted.toString(16) + nonce.toString(16));
 };
 
 function _encryptWithRsa(rsaKey, payload) {
