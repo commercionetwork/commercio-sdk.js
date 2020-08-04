@@ -5,6 +5,8 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/commercionetwork/commercio-sdk.js)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/commercionetwork/commercio-sdk.js)
 
+[![NPM](https://nodei.co/npm/@commercio.network/commercio-sdk.js.png?mini=true)](https://nodei.co/npm/@commercio.network/commercio-sdk.js/)
+
 This repository contains the code of the Javascript SDK.
 
 ## Helper methods

@@ -1,6 +1,6 @@
 {
   "name": "@commercio.network/commercio-sdk.js",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Commercio SDK Javascript",
   "main": "lib/index.js",
   "scripts": {
