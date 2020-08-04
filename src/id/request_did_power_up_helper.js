@@ -38,7 +38,7 @@ function didPowerUpfromWallet({
 
   let encryptedProof = _encryptWithAes(aesKey, JSON.stringify(signatureJson));
 
-  let encryptedProofKey = _encryptWithRsa(governmentRsaPubKey, aesKey.toString());
+  let encryptedProofKey = _encryptWithRsa(governmentRsaPubKey, aesKey);
 
   let requestDidPowerUp = new Object();
   requestDidPowerUp['claimant'] = senderDid;
@@ -73,10 +73,9 @@ function _encryptWithAes(aesKey, payload) {
   return forge.util.encode64(encrypted.toString(16) + nonce.toString(16));
 };
 
-function _encryptWithRsa(rsaKey, payload) {
-  let publicKey = forge.pki.publicKeyFromPem(rsaKey);
-  let buf = forge.util.createBuffer(payload, "utf8");
-  let encrypted = publicKey.encrypt(buf, 'RSAES-PKCS1-V1_5');
+function _encryptWithRsa(rsaPubKey, payload) {
+  let publicKey = forge.pki.publicKeyFromPem(rsaPubKey);
+  let encrypted = publicKey.encrypt(payload, 'RSAES-PKCS1-V1_5');
   return forge.util.encode64(encrypted);
 };
 
