@@ -32,7 +32,7 @@ function didPowerUpfromWallet({
   signatureJson['sender_did'] = senderDid;
   signatureJson['pairwise_did'] = pairwiseDid;
   signatureJson['timestamp'] = timestamp;
-  signatureJson['signature'] = forge.util.encode64(signature);
+  signatureJson['signature'] = signature;
 
   let aesKey = forge.random.getBytesSync(32);
 
@@ -57,7 +57,9 @@ function _makeJsonSignature({
   let privateKey = forge.pki.privateKeyFromPem(key);
   let md = forge.md.sha256.create();
   md.update(signatureData, 'utf8');
-  return privateKey.sign(md);
+  let signature = privateKey.sign(md);
+  let signatureBuffer = Buffer.from(signature, "binary");
+  return signatureBuffer.toString("base64");
 };
 
 function _encryptWithAes(aesKey, payload) {
@@ -69,16 +71,19 @@ function _encryptWithAes(aesKey, payload) {
   cipher.update(forge.util.createBuffer(payload, "utf8"));
   cipher.finish();
   let cipherText = cipher.output.getBytes();
+  let tag = cipher.mode.tag.getBytes();
+  let tagBuffer = Buffer.from(tag, "binary");
   let nonceBuffer = Buffer.from(iv, "binary");
   let cipherTextBuffer = Buffer.from(cipherText, "binary");
-  let chiperTextWithNonce = Buffer.concat([nonceBuffer, cipherTextBuffer]);
+  let chiperTextWithNonce = Buffer.concat([nonceBuffer, cipherTextBuffer, tagBuffer]);
   return chiperTextWithNonce.toString("base64");
 };
 
 function _encryptWithRsa(rsaPubKey, payload) {
   let publicKey = forge.pki.publicKeyFromPem(rsaPubKey);
-  let encrypted = publicKey.encrypt(payload, 'RSAES-PKCS1-V1_5');
-  return forge.util.encode64(encrypted);
+  let cipherText = publicKey.encrypt(payload, 'RSAES-PKCS1-V1_5');
+  let cipherTextBuffer = Buffer.from(cipherText, "binary");
+  return cipherTextBuffer.toString("base64");
 };
 
 export {
