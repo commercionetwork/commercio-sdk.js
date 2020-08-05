@@ -64,13 +64,13 @@ function _encryptWithAes(aesKey, payload) {
   let cipher = forge.cipher.createCipher('AES-GCM', aesKey);
   let iv = forge.random.getBytesSync(12);
   cipher.start({
-    iv: iv
+    iv: iv,
+    tagLength: 256
   });
   cipher.update(forge.util.createBuffer(payload, "utf8"));
   cipher.finish();
-  let encrypted = cipher.output.toHex();
-  let nonce = forge.util.bytesToHex(iv);
-  return forge.util.encode64(encrypted.toString(16) + nonce.toString(16));
+  let encrypted = cipher.output.data;
+  return forge.util.encode64(encrypted);
 };
 
 function _encryptWithRsa(rsaPubKey, payload) {
