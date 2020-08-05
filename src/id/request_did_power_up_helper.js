@@ -70,7 +70,7 @@ function _encryptWithAes(aesKey, payload) {
   cipher.update(forge.util.createBuffer(payload, "utf8"));
   cipher.finish();
   let encrypted = cipher.output.data;
-  return forge.util.encode64(encrypted);
+  return forge.util.encode64(iv + encrypted);
 };
 
 function _encryptWithRsa(rsaPubKey, payload) {
