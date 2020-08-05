@@ -68,8 +68,11 @@ function _encryptWithAes(aesKey, payload) {
   });
   cipher.update(forge.util.createBuffer(payload, "utf8"));
   cipher.finish();
-  let encrypted = cipher.output.getBytes();
-  return forge.util.encode64(encrypted);
+  let cipherText = cipher.output.getBytes();
+  let nonceBuffer = Buffer.from(iv, "binary");
+  let cipherTextBuffer = Buffer.from(cipherText, "binary");
+  let chiperTextWithNonce = Buffer.concat([nonceBuffer, cipherTextBuffer]);
+  return chiperTextWithNonce.toString("base64");
 };
 
 function _encryptWithRsa(rsaPubKey, payload) {
