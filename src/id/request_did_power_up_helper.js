@@ -32,13 +32,13 @@ function didPowerUpfromWallet({
   signatureJson['sender_did'] = senderDid;
   signatureJson['pairwise_did'] = pairwiseDid;
   signatureJson['timestamp'] = timestamp;
-  signatureJson['signature'] = forge.util.encode64(signature);
+  signatureJson['signature'] = signature;
 
   let aesKey = forge.random.getBytesSync(32);
 
   let encryptedProof = _encryptWithAes(aesKey, JSON.stringify(signatureJson));
 
-  let encryptedProofKey = _encryptWithRsa(governmentRsaPubKey, aesKey.toString());
+  let encryptedProofKey = _encryptWithRsa(governmentRsaPubKey, aesKey);
 
   let requestDidPowerUp = new Object();
   requestDidPowerUp['claimant'] = senderDid;
@@ -57,7 +57,9 @@ function _makeJsonSignature({
   let privateKey = forge.pki.privateKeyFromPem(key);
   let md = forge.md.sha256.create();
   md.update(signatureData, 'utf8');
-  return privateKey.sign(md);
+  let signature = privateKey.sign(md);
+  let signatureBuffer = Buffer.from(signature, "binary");
+  return signatureBuffer.toString("base64");
 };
 
 function _encryptWithAes(aesKey, payload) {
@@ -68,16 +70,20 @@ function _encryptWithAes(aesKey, payload) {
   });
   cipher.update(forge.util.createBuffer(payload, "utf8"));
   cipher.finish();
-  let encrypted = cipher.output.toHex();
-  let nonce = forge.util.bytesToHex(iv);
-  return forge.util.encode64(encrypted.toString(16) + nonce.toString(16));
+  let cipherText = cipher.output.getBytes();
+  let tag = cipher.mode.tag.getBytes();
+  let tagBuffer = Buffer.from(tag, "binary");
+  let nonceBuffer = Buffer.from(iv, "binary");
+  let cipherTextBuffer = Buffer.from(cipherText, "binary");
+  let chiperTextWithNonce = Buffer.concat([nonceBuffer, cipherTextBuffer, tagBuffer]);
+  return chiperTextWithNonce.toString("base64");
 };
 
-function _encryptWithRsa(rsaKey, payload) {
-  let publicKey = forge.pki.publicKeyFromPem(rsaKey);
-  let buf = forge.util.createBuffer(payload, "utf8");
-  let encrypted = publicKey.encrypt(buf, 'RSAES-PKCS1-V1_5');
-  return forge.util.encode64(encrypted);
+function _encryptWithRsa(rsaPubKey, payload) {
+  let publicKey = forge.pki.publicKeyFromPem(rsaPubKey);
+  let cipherText = publicKey.encrypt(payload, 'RSAES-PKCS1-V1_5');
+  let cipherTextBuffer = Buffer.from(cipherText, "binary");
+  return cipherTextBuffer.toString("base64");
 };
 
 export {

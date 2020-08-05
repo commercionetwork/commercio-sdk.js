@@ -7,7 +7,7 @@
 
 [![NPM](https://nodei.co/npm/@commercio.network/commercio-sdk.js.png?mini=true)](https://nodei.co/npm/@commercio.network/commercio-sdk.js/)
 
-This repository contains the code of the Javascript SDK.
+This repository contains the code of the Javascript Commercio SDK.
 
 ## Helper methods
 
@@ -165,8 +165,14 @@ let closeCdpMsgList = buildCloseCdpMsgList([closeCdp]);
 
 ### Utilities
 
-- *hashGenerator*, to get message hash.
-- *keysHandler*, to manage RSA keys.
+- *hashGenerator*, to get message hash:
+  - *getHash256*
+- *keysHandler*, to manage RSA keys:
+  - *privateKeyFromPem*
+  - *publicKeyFromPem*
+  - *privateKeyToPem*
+  - *publicKeyToPem*
+  - *publicKeyFromPrivate*
 
 ## References
 
