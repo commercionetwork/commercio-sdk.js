@@ -5,8 +5,7 @@ import {
 let forge = require('node-forge');
 
 /**
- * Creates a Did PowerUp
- * 
+ * Creates a Did PowerUp object.
  * @param {String} senderDid 
  * @param {String} pairwiseDid 
  * @param {Array.<StdCoin>} amount 
@@ -50,6 +49,12 @@ function didPowerUpfromWallet({
   return requestDidPowerUp;
 }
 
+/**
+ * Sign the proof.
+ * @param {String} signatureData
+ * @param {String} key
+ * @return {String}
+ */
 function _makeJsonSignature({
   signatureData,
   key
@@ -62,6 +67,12 @@ function _makeJsonSignature({
   return signatureBuffer.toString("base64");
 };
 
+/**
+ * Encrypt the proof.
+ * @param {String} aesKey 
+ * @param {String} payload 
+ * @return {String}
+ */
 function _encryptWithAes(aesKey, payload) {
   let cipher = forge.cipher.createCipher('AES-GCM', aesKey);
   let iv = forge.random.getBytesSync(12);
@@ -79,6 +90,12 @@ function _encryptWithAes(aesKey, payload) {
   return chiperTextWithNonce.toString("base64");
 };
 
+/**
+ * Encrypt the key.
+ * @param {String} rsaPubKey 
+ * @param {String} payload
+ * @return {String} 
+ */
 function _encryptWithRsa(rsaPubKey, payload) {
   let publicKey = forge.pki.publicKeyFromPem(rsaPubKey);
   let cipherText = publicKey.encrypt(payload, 'RSAES-PKCS1-V1_5');

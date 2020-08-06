@@ -1,6 +1,5 @@
 /**
  * Builds an array of SetIdentity messages.
- * 
  * @param {Array.<DidDocument>} didDocuments
  * @return {Array.<StdMsg>}
  */
@@ -17,7 +16,6 @@ function buildSetDidDocumentMsgList(didDocuments) {
 
 /**
  * Builds an array of RequestDidPowerUp messages.
- * 
  * @param {Array.<RequestDidPowerUp>} didPowerUpRequests
  * @return {Array.<StdMsg>}
  */

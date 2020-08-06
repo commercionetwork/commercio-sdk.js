@@ -1,6 +1,5 @@
 /**
  * Builds an array of BuyMembership messages.
- * 
  * @param {Array<BuyMembership>} buyMemberships
  * @return {Array.<StdMsg>}
  */
@@ -17,7 +16,6 @@ function buildBuyMembershipMsgList(buyMemberships) {
 
 /**
  * Builds an array of InviteUser messages.
- * 
  * @param {Array.<InviteUser>} inviteUsers 
  * @return {Array.<StdMsg>}
  */

@@ -1,6 +1,5 @@
 /**
  * Builds a DDO public key.
- * 
  * @param {String} id
  * @param {String} type
  * @param {String} controller
@@ -21,8 +20,7 @@ function buildDidDocumentPublicKey({
   return key;
 }
 /**
- * Builds the proof signature content of DDO
- * 
+ * Builds the proof signature content of DDO.
  * @param {String} context
  * @param {String} did
  * @param {Array.<DidDocumentPublicKey>} publicKeys
@@ -41,8 +39,7 @@ function buildDidDocumentProofSignatureContent({
 };
 
 /**
- * Creates a DDO
- * 
+ * Creates a DDO object.
  * @param {String} context
  * @param {Array.<DidDocumentPublicKey>} publicKeys
  * @param {String} bech32Address
@@ -83,7 +80,7 @@ function didDocumentFromWallet({
 };
 
 /**
- * Computes the DDO proof based on the given controller, verificationMethod, signatureValue and proofPurpose
+ * Computes the DDO proof based on the given controller, verificationMethod, signatureValue and proofPurpose.
  * @param {String} bech32Address 
  * @param {String} bech32PublicKey 
  * @param {String} signatureValue 

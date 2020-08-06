@@ -1,6 +1,5 @@
 /**
- * Creates an InviteUser
- * 
+ * Creates an InviteUser object.
  * @param {String} recipient 
  * @param {String} sender
  * @return {InviteUser}

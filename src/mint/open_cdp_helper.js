@@ -1,5 +1,5 @@
 /**
- * Creates an OpenCdp.
+ * Creates an OpenCdp object.
  * 
  * @param {String} bech32Address
  * @param {Array.<StdCoin>} amount
