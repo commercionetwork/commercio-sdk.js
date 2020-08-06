@@ -1,6 +1,5 @@
 /**
  * Builds an array of ShareDocument messages.
- * 
  * @param {Array.<CommercioDoc>} shareDocuments
  * @return {Array.<StdMsg>}
  */
@@ -17,7 +16,6 @@ function buildShareDocumentMsgList(shareDocuments) {
 
 /**
  * Builds an array of SendDocumentReceipt messages.
- * 
  * @param {Array.<CommercioDocReceipt>} sendDocumentReceipts
  * @return {Array.<StdMsg>}
  */

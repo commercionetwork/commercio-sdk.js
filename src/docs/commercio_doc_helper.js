@@ -12,7 +12,7 @@ const checksumAlgorithms = {
 };
 
 /**
- * Creates a Commercio Doc
+ * Creates a Commercio Doc object.
  * @param {String} bech32Address
  * @param {Array.<String>} recipients
  * @param {String} contentUri
@@ -112,6 +112,13 @@ function commercioDocFromWallet({
   return commercioDoc;
 };
 
+/**
+ * Builds the metadata value.
+ * @param {String} contentUri
+ * @param {CommercioDocMetadataSchema} schema
+ * @param {String} schemaType
+ * @return {CommercioDocMetadata}
+ */
 function _buildMetadata({
   contentUri,
   schema,
@@ -133,6 +140,12 @@ function _buildMetadata({
   return metadata;
 }
 
+/**
+ * Builds the checksum value.
+ * @param {String} value
+ * @param {String} algorithm
+ * @return {CommercioDocChecksum} 
+ */
 function _buildChecksum({
   value,
   algorithm
@@ -171,6 +184,12 @@ function _buildChecksum({
   return checksum;
 }
 
+/**
+ * Build the encryption_data value.
+ * @param {Array.<CommercioDocEncryptionDataKey>} keys
+ * @param {Array.<String>} encryptedData
+ * @return {CommercioDocEncryptionData}
+ */
 function _buildEncryptionData({
   keys,
   encryptedData
@@ -182,6 +201,15 @@ function _buildEncryptionData({
   return encryptionData;
 }
 
+/**
+ * Builds the do_sign value.
+ * @param {String} storageUri
+ * @param {String} signerInstance
+ * @param {Array.<String>} sdnData
+ * @param {String} vcrId
+ * @param {String} certificateProfile
+ * @return {CommercioDoSign}
+ */
 function _buildDoSign({
   storageUri,
   signerInstance,

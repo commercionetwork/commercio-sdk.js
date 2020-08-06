@@ -3,7 +3,7 @@ import {
 } from "uuid";
 
 /**
- * Creates a Commercio Doc receipt
+ * Creates a Commercio Doc receipt object.
  * @param {String} sender 
  * @param {String} recipient 
  * @param {String} txHash 

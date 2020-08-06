@@ -4,6 +4,7 @@ const hashGenerator = {
   /**
    * Provides SHA-256 message digests.
    * @param {String} message 
+   * @return {String}
    */
   getHash256(message) {
     let md = forge.md.sha256.create();
